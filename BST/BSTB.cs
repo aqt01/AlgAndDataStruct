@@ -2,72 +2,13 @@ using System;
 
 namespace BSTTree
 {
-	public class MainClass
-	{
-		public static void Main ()
-		{
-			BSTBB1 bst = new BSTBB1();
-			/*
-			bst.AddNode(1,1);
-			bst.AddNode(2,3);
-			bst.AddNode(3,3);
-			*/
-			
-			bst.AddNode (10, 1);
-			bst.AddNode (20, 3);
-			bst.AddNode (15, 4);
-			bst.AddNode (25, 5);
-			bst.AddNode (30, 6);
-			bst.AddNode (15, 7);
-			bst.AddNode (14, 8);
-			bst.AddNode (17, 9);
-			bst.AddNode (16, 10);
-			bst.AddNode (18, 11);
-			bst.AddNode (19, 12);
-			
-			// 30 more
-			
-			bst.AddNode (40, 1);
-			
-			bst.AddNode (5, 13);
-			bst.AddNode (4, 14);
-			bst.AddNode (8, 15);
-			bst.AddNode (9, 16);
-			bst.AddNode (7, 17);
-						
-			
-			bst.print (bst.getRoot ());
-			Console.WriteLine (bst.max (bst.getRoot ()).key);			
-			Console.WriteLine (bst.min (bst.getRoot ()).key);
-			// Must implemnet an stack
-			//Console.WriteLine(bst.next(1).key);			
-			
-			
-			
-			
-			Console.WriteLine (bst.DeleteNode (4));
-			
-			Console.WriteLine (bst.DeleteNode (25));
-			
-			Console.WriteLine (bst.DeleteNode (30));
-			Console.WriteLine (bst.DeleteNode (40));
-			
-			Console.WriteLine ("After 25 delete");
-			
-			bst.print (bst.getRoot ());
-			//Console.WriteLine (bst.FindNode (20).R.key);
-			 
-									
-		}
-	}
-	
-	public class BST
+	public class BSTBB1
 	{
 
 		int size;
 		TreeNode root;
 			
-		public BST ()
+		public BSTBB1 ()
 		{			
 			root = null;
 			size = 0;
@@ -78,7 +19,6 @@ namespace BSTTree
 			return root;
 		}		
 		
-	
 		public TreeNode FindNode (int _key)
 		{
 				
@@ -125,26 +65,6 @@ namespace BSTTree
 			return -1;
 				
 					
-		}
-		
-		public int nodeSize(TreeNode x)
-		{
-			return x.size;
-		}
-		
-		public int min_Size(TreeNode x) 
-		{
-			return Nodesize(x.R);
-		}
-		
-		public int max_Size(TreeNode x) 
-		{
-			return Nodesize(x.R);
-		}
-		
-		public double balanced_Factor(int x, int y) 
-		{
-				return (max_size()/ (min_size()+1));
 		}
 		
 		public void print (TreeNode cur)
@@ -324,8 +244,9 @@ namespace BSTTree
 			return cur;
 		}
 		
-		public void AddNodeB (int _key, int _val)
+		public void AddNode (int _key, int _val)
 		{
+								
 			TreeNode newNode = new TreeNode (_key, _val);			
 			TreeNode curr = root;
 			TreeNode temp = null;
@@ -377,89 +298,10 @@ namespace BSTTree
 					
 			
 		}
-		
-			public void AddNode (int _key, int _val)
-		{
-								
-			TreeNode newNode = new TreeNode (_key, _val);			
-			TreeNode curr = root;
-			TreeNode temp = null;
-										
-			if (size == 0) {		
-				root = newNode;
-				size++;
-				return ;
-			}
-				
-				
-			while (curr!=null) {		
-				
-				//	temp = curr;	
-				temp = curr;
-				// Si el valor ya existe, reemplaza el valor del nodo
-				if (_key == curr.key) {
-					curr.val = _val;
-					return ;
-				}
-					
-				if (_key < curr.key)
-						
-					curr = curr.L;
-				else if (_key > curr.key)
-						
-					curr = curr.R;
-				
-				
-				
-			}	
 			
-					
-			if (_key > temp.key) { 
-				curr = new TreeNode (_key, _val);
-				temp.R = curr;
-			} else if (_key < temp.key) {
-				curr = new TreeNode (_key, _val);
-				temp.L = curr;
-			}
-				
-				
-			
-			size++;
-					
-			
-		}
-		
+	
 	}
 		
-	public class TreeNode
-	{
-		
-		public TreeNode L, R	;			// parent, right and left
-		//public TreeNode P;
-		public int val;
-		public int key;
-		public int size; // subtree size
-		public TreeNode (int _key, int _val)
-		{	
-			L = null;
-			R = null;		
-		//	P = null;
-			key = _key;
-			val = _val;
-			size=1;
-		}
-			
-		// Think this is not necessary
-			
-		public TreeNode ()
-		{
-			L = null;
-			R = null;
-		//	P = null;
-		}
-			
-			
-	}
 }
 
 
