@@ -77,7 +77,7 @@ namespace BSTTree
 			print (cur.L);
 		}
 		
-		public TreeNode DeleteNode (int _key)
+		public void DeleteNode (int _key)
 		{
 			// Node to delete
 			TreeNode cur = root;
@@ -87,7 +87,7 @@ namespace BSTTree
 			TreeNode prev = null;
 				
 			if (cur == null)
-				return null;
+				return ;
 			
 			// OT es la orientacion que tomara el hubbards delete
 			// True: derecha, false: izquierda
@@ -130,6 +130,7 @@ namespace BSTTree
 									temp.R = cur.R;
 									temp.L = cur.L;
 									*/
+								return;
 							}
 						} else if (cur.R != null) {
 							// it must make the temp cur.L?																
@@ -137,13 +138,16 @@ namespace BSTTree
 							Console.WriteLine ("!" + cur.R.key);															
 							cur = cur.R;
 							prev.R = cur;
-							 																
+							 return ;												
 						}
-							
-						prev.R = null;
-						cur=null;	
-									
-						return cur;
+						// para leaves
+						if (cur.R==null && cur.L==null)
+						{
+							prev.R = null;
+							cur=null;	
+						}
+							//except?		
+						return ;
 						
 					} else 
 					{
@@ -192,7 +196,7 @@ namespace BSTTree
 									
 			}
 			
-			return null;
+			return ;
 				
 				
 				

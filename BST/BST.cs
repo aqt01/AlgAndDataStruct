@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace BSTTree
 {
@@ -45,12 +46,15 @@ namespace BSTTree
 			
 			
 			
-			Console.WriteLine (bst.DeleteNode (4));
+			bst.DeleteNode (4);
 			
-			Console.WriteLine (bst.DeleteNode (25));
 			
-			Console.WriteLine (bst.DeleteNode (30));
-			Console.WriteLine (bst.DeleteNode (40));
+			bst.DeleteNode (25);
+			
+			bst.DeleteNode (30);
+			bst.DeleteNode (40);
+			
+			bst.DeleteNode (20);
 			
 			Console.WriteLine ("After 25 delete");
 			
@@ -126,6 +130,7 @@ namespace BSTTree
 				
 					
 		}
+		/*
 		
 		public int nodeSize(TreeNode x)
 		{
@@ -134,18 +139,19 @@ namespace BSTTree
 		
 		public int min_Size(TreeNode x) 
 		{
-			return Nodesize(x.R);
+			return nodeSize(x.R);
 		}
 		
 		public int max_Size(TreeNode x) 
 		{
-			return Nodesize(x.R);
+			return nodeSize(x.R);
 		}
 		
-		public double balanced_Factor(int x, int y) 
+		public double balanced_Factor(TreeNode X) 
 		{
-				return (max_size()/ (min_size()+1));
+				return (max_Size(X.R)/ (min_Size(X.L)+1));
 		}
+		*/
 		
 		public void print (TreeNode cur)
 		{				
@@ -279,13 +285,15 @@ namespace BSTTree
 				
 		}
 		
-		public TreeNode min (TreeNode x)
+		public TreeNode min (TreeNode x, TreeNode prev)
 		{
 
 			TreeNode cur = x;
 			//TreeNode _cur = root;
 
-			while (cur.L!=null) {
+			while (cur.L!=null) 
+			{
+				prev = 
 				cur = cur.L;
 			}
 			return cur;
@@ -323,6 +331,30 @@ namespace BSTTree
 			}
 			return cur;
 		}
+		// if turn left, must minus the right size and start counting with the sum of its igga
+		// fadfa;lj the same but in right side Not sure)
+		/*
+		public int rank(int _key) 
+		{
+			if(root==null)
+				throw new InvalidOperationException();
+			
+			TreeNode cur = root;
+			
+			 int idx=0; // indice del nodo
+			
+			while(cur != null) 				
+			{
+				if(_key < cur.key)
+					cur = cur.L;
+				else if (_key > cur.key)
+					cur = cur.R;
+				
+			}
+		
+		}
+		*/
+		
 		
 		public void AddNodeB (int _key, int _val)
 		{
@@ -330,31 +362,33 @@ namespace BSTTree
 			TreeNode curr = root;
 			TreeNode temp = null;
 										
-			if (size == 0) {		
+			if (size == 0) 
+			{		
 				root = newNode;
 				size++;
 				return ;
 			}
 				
-				
+					
+			Stack<TreeNode> p = new Stack(5);
+		
 			while (curr!=null) {		
 				
 				//	temp = curr;	
 				temp = curr;
 				// Si el valor ya existe, reemplaza el valor del nodo
-				if (_key == curr.key) {
-					curr.val = _val;
-					return ;
-				}
+				
 					
 				if (_key < curr.key)
 				{
+					p.Push(curr);
 					curr.size++;
 					curr = curr.L;
 					
 				}
 				else if (_key > curr.key)
 				{	
+					p.Push(curr);
 					curr.size++;
 					curr = curr.R;
 				}
@@ -363,14 +397,16 @@ namespace BSTTree
 			}	
 			
 					
-			if (_key > temp.key) { 
+			if (_key > temp.key) { 				
 				curr = new TreeNode (_key, _val);
 				temp.R = curr;
 			} else if (_key < temp.key) {
 				curr = new TreeNode (_key, _val);
 				temp.L = curr;
 			}
-				
+			
+			for(int i=0 ; i<p.Length;i++)		
+						p.Pop().size++;
 				
 			
 			size++;
@@ -384,14 +420,24 @@ namespace BSTTree
 			TreeNode newNode = new TreeNode (_key, _val);			
 			TreeNode curr = root;
 			TreeNode temp = null;
-										
+				
+			
 			if (size == 0) {		
 				root = newNode;
 				size++;
 				return ;
 			}
+			
+			// should i consider this
+			/*temp = FindNode(_key); 
+			 * if (temp!=null)
+			 * {
+					temp.val = _val;
+					return ;
+			   }
 				
-				
+			*/
+			
 			while (curr!=null) {		
 				
 				//	temp = curr;	
