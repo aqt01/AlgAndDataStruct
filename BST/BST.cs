@@ -1,49 +1,9 @@
+/*
 using System;
 using System.Collections.Generic;
 
 namespace BSTTree
 {
-	public class MainClass
-	{
-		public static void Main ()
-		{
-			BST bst = new BST();
-		
-						bst.AddNode (16, 1);
-			bst.AddNode (12, 1);
-			bst.AddNode (22, 3);
-			bst.AddNode (10, 4);
-			bst.AddNode (13, 5);
-			bst.AddNode (29, 6);
-			bst.AddNode (5, 7);
-			
-			bst.AddNode (11, 5);
-			bst.AddNode (14, 6);
-			bst.AddNode (35, 7);
-			
-			bst.AddNode (4, 5);
-			bst.AddNode (7, 6);
-			bst.AddNode (2, 7);
-			
-			bst.AddNode (6, 6);
-			bst.AddNode (9, 7);
-			bst.AddNode (8, 7);
-			bst.AddNode (15, 1);
-				
-			Console.WriteLine("13 RNK = " + bst.rank(13 ));
-			Console.WriteLine("14 RNK = " + bst.rank(14 ));
-			Console.WriteLine("15 RNK = " + bst.rank(15 ));
-			
-			Console.WriteLine("2 RNK = " + bst.rank(2 ));
-			Console.WriteLine("4 RNK = " + bst.rank(4 ));
-			Console.WriteLine("7 RNK = " + bst.rank(7 ));
-			Console.WriteLine("9 RNK = " + bst.rank(9 ));
-			bst.printSizes(bst.getRoot());
-			bst.print(bst.getRoot());
-			
-			
-		}
-	}
 	
 	public class BST
 	{
@@ -570,7 +530,7 @@ namespace BSTTree
 		
 		}
 		*/
-		
+	/*	
 		
 		
 		public void AddNode (int _key, int _val)
@@ -705,5 +665,4 @@ namespace BSTTree
 			
 	}
 }
-
-
+*/

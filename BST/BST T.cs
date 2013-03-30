@@ -24,16 +24,22 @@ namespace BSTTree
 			bst.AddNodeB (2, 7);
 			*/
 			
-			bst.AddNodeB (16, 1);
+			bst.AddNodeB (18, 1);
 			bst.AddNodeB (12, 1);
 			bst.AddNodeB (22, 3);
+			
 			bst.AddNodeB (10, 4);
 			bst.AddNodeB (13, 5);
+			bst.AddNodeB (16, 5);
+			bst.AddNodeB (15, 6);
+			bst.AddNodeB (14, 6);
+			bst.AddNodeB (17, 6);
+			
 			bst.AddNodeB (29, 6);
 			bst.AddNodeB (5, 7);
 			
 			bst.AddNodeB (11, 5);
-			bst.AddNodeB (14, 6);
+			
 			bst.AddNodeB (35, 7);
 			
 			bst.AddNodeB (4, 5);
@@ -43,16 +49,43 @@ namespace BSTTree
 			bst.AddNodeB (6, 6);
 			bst.AddNodeB (9, 7);
 			bst.AddNodeB (8, 7);
-			bst.AddNodeB (15, 1);
+			
+			bst.AddNodeB (24, 1);
+			bst.AddNodeB (27, 1);
+			bst.AddNodeB (23, 3);
+			bst.AddNodeB (25, 1);
+			bst.AddNodeB (28, 1);
 			
 			Console.WriteLine("RNK = " + bst.rank(13 ));
 			Console.WriteLine("RNK = " + bst.rank(14 ));
 			Console.WriteLine("RNK = " + bst.rank(15 ));
 			
+			
+			Console.WriteLine("16 RNK = " + bst.rank(16 ));
+			Console.WriteLine("17 RNK = " + bst.rank(17 ));
+			
+			Console.WriteLine("18 RNK = " + bst.rank(18 ));
+			Console.WriteLine("RNK = " + bst.rank(15 ));
+			
+			
+			
 			Console.WriteLine("RNK = " + bst.rank(2 ));
 			Console.WriteLine("RNK = " + bst.rank(4 ));
 			Console.WriteLine("RNK = " + bst.rank(7 ));
 			Console.WriteLine("RNK = " + bst.rank(9 ));
+			
+			Console.WriteLine("22 RNK = " + bst.rank(22 ));
+			Console.WriteLine("29 RNK = " + bst.rank(29 ));
+			Console.WriteLine("35 RNK = " + bst.rank(35 ));
+			
+			
+			Console.WriteLine("24 RNK = " + bst.rank(24 ));
+			Console.WriteLine("23 RNK = " + bst.rank(23 ));
+			Console.WriteLine("25 RNK = " + bst.rank(25 ));			
+			Console.WriteLine("27 RNK = " + bst.rank(27 ));
+			Console.WriteLine("28 RNK = " + bst.rank(28 ));
+			
+			
 			bst.printSizes(bst.getRoot());
 			bst.print(bst.getRoot());
 			
@@ -716,16 +749,17 @@ namespace BSTTree
 							
 							// si el nodo posee valores en su derecha e izquierda
 							if (cur.R!=null && cur.L!=null) {
+								return (cnt+cur.L.size);
 								// si el nodo solo posee valor a su derecha
 							} else if (cur.R!=null) {
 							
-								return size -(cnt-cur.size);
+								return (cnt);
 							}// si el nodo posee valores en su izq.
 							else if (cur.L!=null) {
-							
+							return (cnt+cur.L.size);
 							}// si no posee ningun valor
 							else if (cur.R==null && cur.L==null) {
-							
+							return cnt;
 							}
 						
 						} else {
@@ -758,7 +792,12 @@ namespace BSTTree
 					else if(_key> cur.key ) {
 						
 						if(OT) {
-						
+							if(cur.L != null)
+								cnt += cur.L.size+1 ;
+							else if (cur.R!=null && cur.L!=null )
+								cnt += cur.L.size; 
+							else if(cur.R!=null)
+								cnt+= 1;									
 						}
 						else {
 							
@@ -775,9 +814,6 @@ namespace BSTTree
 					else if (_key < cur.key )
 					{
 						
-						if(OT) {
-							cnt++;
-						}
 						cur = cur.L;
 					}
 							
