@@ -8,290 +8,40 @@ namespace BSTTree
 		public static void Main ()
 		{
 			BST bst = new BST();
-			/*
-			bst.AddNode(1,1);
-			bst.AddNode(2,3);
-			bst.AddNode(3,3);
-			*/
-			
-			bst.AddNode (10, 1);
-			bst.AddNode (20, 3);
-			bst.AddNode (15, 4);
-			bst.AddNode (25, 5);
-			bst.AddNode (30, 6);
-			bst.AddNode (15, 7);
-			bst.AddNode (14, 8);
-			bst.AddNode (17, 9);
-			bst.AddNode (16, 10);
-			bst.AddNode (18, 11);
-			bst.AddNode (19, 12);
-			
-			// 30 more
-			
-			bst.AddNode (40, 1);
-			
-			bst.AddNode (5, 13);
-			bst.AddNode (4, 14);
-			bst.AddNode (8, 15);
-			bst.AddNode (9, 16);
-			bst.AddNode (7, 17);
-
-			bst.AddNode (1, 13);
-			bst.AddNode (3, 14);
-			bst.AddNode (2, 15);
-			
-			
-			bst.AddNode (35, 1);
-			bst.AddNode (31, 3);
-			bst.AddNode (37, 4);
-			bst.AddNode (38, 5);
-			
-			bst.AddNode (50, 5);
-			//Console.WriteLine (bst.max (bst.getRoot ()).key);			
-			//Console.WriteLine (bst.min (bst.getRoot ()).key);
-			// Must implemnet an stack
-			//Console.WriteLine(bst.next(1).key);			
-			
-			
-			
-			/*
-			bst.DeleteNode (4);
-			
-			
-			bst.DeleteNode (25);
-			
-			bst.DeleteNode (30);
-			bst.DeleteNode (40);
-			
-			
-			*/
-			//bst.DeleteNode (20);
-			/*
-			
-			bst.DeleteNode (4);
-			Console.WriteLine ("After 25 delete");
-			
-//			Console.WriteLine (" left 20" + bst.FindNode(30).L.key);
-			bst.print (bst.getRoot ());
-			Console.WriteLine("Left 5 key: " + bst.FindNode(5).L.key);
-			Console.WriteLine("L R 5 key: " + bst.FindNode().L.R.key);
-			//Console.WriteLine("R R 5 key: " + bst.FindNode(30).R.R.key);
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(30).R.L.key);
-			//Console.WriteLine (bst.FindNode (30).R.key);
-			 */
-			
-			
-			
-			/*
-			bst.DeleteNode (25);
-			
-			
-			
-			Console.WriteLine ("After 25 delete");
-			
-//			Console.WriteLine (" left 20" + bst.FindNode(30).L.key);
-			bst.print (bst.getRoot ());
-			//Console.WriteLine("R key: " + bst.FindNode(30).R.key);
-			
-			Console.WriteLine("R L 5 key: " + bst.FindNode(20).R.key);
-			Console.WriteLine("R L 5 key: " + bst.FindNode(20).R.R.key);
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(20).R.R.R.key);		
-			
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.L.key);		
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.R.key);		
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.R.R.key);		
-			*/
-			
-			
-			
-			// proof to delete 30
-			/*
-			bst.DeleteNode (30);
-			Console.WriteLine ("After 40 delete");
-			
-//			Console.WriteLine (" left 20" + bst.FindNode(30).L.key);
-			bst.print (bst.getRoot ());
-			//Console.WriteLine("R key: " + bst.FindNode(30).R.key);
-			
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.key);
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.key);
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.key);		
-			
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.L.key);		
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.R.key);		
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.R.R.key);		
-			*/
-			
-			
-			// proof to delete 30
-			/*
-			bst.DeleteNode (30);
-			Console.WriteLine ("After 40 delete");
-			
-//			Console.WriteLine (" left 20" + bst.FindNode(30).L.key);
-			bst.print (bst.getRoot ());
-			//Console.WriteLine("R key: " + bst.FindNode(30).R.key);
-			
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.key);
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.key);
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.key);		
-			
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.L.key);		
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.R.key);		
-			Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.R.R.key);		
-			*/
-			
-			
-			// prueba borrando el 1, un leave con un tree en su derecha
-			
-			
-			
-			// Borrando el 1 con un
-			
-			/*
-			bst.DeleteNode (1);
-			Console.WriteLine ("After 40 delete");
-			
-			
-			bst.print (bst.getRoot ());
-			
-			Console.WriteLine (" FInD:  " + bst.getRoot().key);
-			
-			Console.WriteLine ("Root L:  " + bst.getRoot().L.key);
-			Console.WriteLine ("Root L:  " + bst.getRoot().L.L.key);
-			Console.WriteLine ("Root L:  " + bst.getRoot().L.L.L.key);
-			
-			Console.WriteLine (" FInD:  " + bst.FindNode(3).key);
-			Console.WriteLine (" L " + bst.FindNode(3).L.key);
-			*/
-			
-			//Console.WriteLine("R L 4 key: " + bst.FindNode(1).key);
-			//Console.WriteLine("R L 4 key: " + bst.FindNode(3).L.key);
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(3).L.L.key);
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.key);		
-			
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.L.key);		
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.R.key);		
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.L.R.R.key);		
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(25).R.R.R.key);
-			//Console.WriteLine("R R 5 key: " + bst.FindNode(30).R.R.key);
-			//Console.WriteLine("R L 5 key: " + bst.FindNode(30).R.L.key);
-			//Console.WriteLine (bst.FindNode (30).R.key);
-			
-			
-			
-			// Borrando el 4 con un
-			//hecho
-			/*
-			bst.DeleteNode (4);
-			Console.WriteLine ("After 40 delete");
-			bst.print (bst.getRoot ());
-			
-			Console.WriteLine (" Root:  " + bst.getRoot().key);
-			Console.WriteLine ("Root L:  " + bst.getRoot().L.key);
-			Console.WriteLine ("Root L L:  " + bst.getRoot().L.L.key);
-			Console.WriteLine (" FInD 3:  " + bst.FindNode(3).key);
-			Console.WriteLine (" 3 L " + bst.FindNode(3).L.key);
-			Console.WriteLine(" 3 L R: " + bst.FindNode(3).L.R.key);
-			// must blow up
-			//Console.WriteLine(" 3 L R: " + bst.FindNode(3).L.R.L.key);
-			
-			//Console.WriteLine(" 3 L R: " + bst.FindNode(3).L.R.R.key);
-			
-			*/
-			
-			// Borrando el 5 con un
-			//hecho
-			/*
-			bst.DeleteNode (5);
-			Console.WriteLine ("After 5 delete");
-			bst.print (bst.getRoot ());
-			
-			Console.WriteLine (" Root:  " + bst.getRoot().key);
-			Console.WriteLine ("Root L:  " + bst.getRoot().L.key);
-			Console.WriteLine ("Root L L:  " + bst.getRoot().L.L.key);			
-			
-			Console.WriteLine (" FInD 4:  " + bst.FindNode(4).key);
-			
-			Console.WriteLine (" 4 R:  " + bst.FindNode(4).R.key);
-			Console.WriteLine (" 4 R R:  " + bst.FindNode(4).R.R.key);
-			Console.WriteLine (" 4 R L:  " + bst.FindNode(4).R.L.key);
-			Console.WriteLine (" 4 L: " + bst.FindNode(4).L.key);
-			Console.WriteLine(" 4 L R: " + bst.FindNode(4).L.R.key);
-			*/
-			
-			// Borrando el 17 con un
-			//hecho
-			/*
-			bst.DeleteNode (17);
-			Console.WriteLine ("After 5 delete");
-			bst.print (bst.getRoot ());
-			
-			Console.WriteLine (" Father:  " + bst.FindNode(20).key);
-			Console.WriteLine ("Father L:  " + bst.FindNode(20).L.key);
-			
-			Console.WriteLine ("Father L L:  " + bst.FindNode(20).L.L.key);			
-			
-			
-			
-			Console.WriteLine (" 15 R:  " + bst.FindNode(15).R.key);
-			Console.WriteLine (" 15 R R:  " + bst.FindNode(15).R.R.key);
-			Console.WriteLine (" 15 R L:  " + bst.FindNode(15).R.L.key);
 		
-			Console.WriteLine (" 15 L: " + bst.FindNode(15).L.key);
-			*/
-		
-			// Borrando el 14 con un
-			//hecho
-			/*
-			bst.DeleteNode (14);
-			Console.WriteLine ("After 5 delete");
-			bst.print (bst.getRoot ());
+						bst.AddNode (16, 1);
+			bst.AddNode (12, 1);
+			bst.AddNode (22, 3);
+			bst.AddNode (10, 4);
+			bst.AddNode (13, 5);
+			bst.AddNode (29, 6);
+			bst.AddNode (5, 7);
 			
-			Console.WriteLine (" Father:  " + bst.FindNode(20).key);
-			Console.WriteLine ("Father L:  " + bst.FindNode(20).L.key);
-			// must blow up
-			//Console.WriteLine ("Father L L:  " + bst.FindNode(20).L.L.key);			
+			bst.AddNode (11, 5);
+			bst.AddNode (14, 6);
+			bst.AddNode (35, 7);
 			
+			bst.AddNode (4, 5);
+			bst.AddNode (7, 6);
+			bst.AddNode (2, 7);
 			
+			bst.AddNode (6, 6);
+			bst.AddNode (9, 7);
+			bst.AddNode (8, 7);
+			bst.AddNode (15, 1);
+				
+			Console.WriteLine("13 RNK = " + bst.rank(13 ));
+			Console.WriteLine("14 RNK = " + bst.rank(14 ));
+			Console.WriteLine("15 RNK = " + bst.rank(15 ));
 			
-			Console.WriteLine (" 15 R:  " + bst.FindNode(15).R.key);
-			Console.WriteLine (" 15 R R:  " + bst.FindNode(15).R.R.key);
-			Console.WriteLine (" 15 R L:  " + bst.FindNode(15).R.L.key);
-
-			// blow again
-		//	Console.WriteLine (" 15 L: " + bst.FindNode(15).L.key);
-			*/
-			// Borrando el 19 con un
-			//hecho
-			/*
-			bst.DeleteNode (19);
-			Console.WriteLine ("After 19 delete");
-			bst.print (bst.getRoot ());
-			
-			Console.WriteLine (" Father:  " + bst.FindNode(20).key);
-			Console.WriteLine ("Father L:  " + bst.FindNode(20).L.key);
-			Console.WriteLine (" 15 R:  " + bst.FindNode(15).R.key);
-			Console.WriteLine (" 15 R R:  " + bst.FindNode(15).R.R.key);
-			// must boom!
-			//Console.WriteLine ("15 R R R :  " + bst.FindNode(15).R.R.R.key);			
-			Console.WriteLine (" 15 R L:  " + bst.FindNode(15).R.L.key);
-			
-			*/
-			
-			// Borrando el 50 con un
-			//hecho
-			/*
-			bst.DeleteNode (50);
-			Console.WriteLine ("After 50 delete");
-			bst.print (bst.getRoot ());
+			Console.WriteLine("2 RNK = " + bst.rank(2 ));
+			Console.WriteLine("4 RNK = " + bst.rank(4 ));
+			Console.WriteLine("7 RNK = " + bst.rank(7 ));
+			Console.WriteLine("9 RNK = " + bst.rank(9 ));
+			bst.printSizes(bst.getRoot());
+			bst.print(bst.getRoot());
 			
 			
-			// must blow up
-			//Console.WriteLine ("30 R R:  " + bst.FindNode(30).R.R.key);											
-			Console.WriteLine (" 30 R:  " + bst.FindNode(30).R.key);
-			Console.WriteLine (" 30 R L:  " + bst.FindNode(30).R.L.key);
-			*/
 		}
 	}
 	
@@ -306,12 +56,17 @@ namespace BSTTree
 			root = null;
 			size = 0;
 		}
-			
+				
 		public TreeNode getRoot ()
 		{
 			return root;
 		}		
 		
+		
+		public int Size ()
+		{
+			return size;
+		}	
 	
 		public TreeNode FindNode (int _key)
 		{
@@ -335,6 +90,110 @@ namespace BSTTree
 			return null;
 				
 					
+		}
+	
+		public int rank(int _key)
+		{
+			// contador
+			TreeNode cur = root;
+			
+			int cnt  = 0;
+			bool OT = true; // orientacion del contador, funcionara para indicar cuando el contador es a la derecha o a la izquierda
+			
+			// si el key introducido es el nodo
+			// retorna el size menos la resta de los nodos a la derecha de la raiz menos 1
+			
+			if (_key == root.key) 
+				if(root.L!=null)
+					return (root.L.size);
+				else
+					return size-(root.R.size+1);
+			// Si el key es mayor que el root, la orientacion se queda en true, ya que ira a la derecha a buscar por el rank			
+			else if(_key > root.key)
+				OT = true;
+			// Si el key es menor que el root, la orientacion se hace negativa, ya que ira a la izquierda a buscar por el rank						
+			else if(_key < root.key)
+				OT = false;
+			
+			while(cur !=null)
+				{
+					// si encuentra el nodo a calcular
+					if(_key == cur.key ) {
+						// si se ha encontrado el valor
+						// y si se encuentra a su derecha
+						
+						if(OT) {
+							
+							// si el nodo posee valores en su derecha e izquierda
+							if (cur.R!=null && cur.L!=null) {
+								// si el nodo solo posee valor a su derecha
+							} else if (cur.R!=null) {
+							
+								return size -(cnt-cur.size);
+							}// si el nodo posee valores en su izq.
+							else if (cur.L!=null) {
+							
+							}// si no posee ningun valor
+							else if (cur.R==null && cur.L==null) {
+							
+							}
+						
+						} else {
+							if (cur.R!=null && cur.L!=null)
+							{
+								if(cnt == 0)
+									return (cur.L.size);
+								else if (cnt > 0)									
+									return (cur.L.size+cnt);
+									
+							} else if (cur.R!=null)
+							{
+							return (cnt );
+							}
+							else if (cur.L!=null) {
+							
+							 return (cur.L.size+cnt );
+							}
+							else if (cur.R==null && cur.L==null) {
+							// si el contador no ha recorrido nada
+							if(cnt==0)
+								return cur.size-1;
+							if(cnt>0)
+								return cnt;
+							
+							}
+						
+						}
+					} // a medida que vaya avanzando la busqueda del rank, el contador aumentara +1
+					else if(_key> cur.key ) {
+						
+						if(OT) {
+						
+						}
+						else {
+							
+							if(cur.L != null)
+								cnt += cur.L.size+1 ;
+							else if (cur.R!=null && cur.L!=null )
+								cnt += cur.L.size; 
+							else if(cur.R!=null)
+								cnt+= 1;
+									
+					 	}
+						cur = cur.R;
+					}
+					else if (_key < cur.key )
+					{
+						
+						if(OT) {
+							cnt++;
+						}
+						cur = cur.L;
+					}
+							
+				}
+			
+			return 0;
 		}
 		
 		public int Find (int _key)
@@ -383,7 +242,15 @@ namespace BSTTree
 		}
 		
 		
-
+		public void printSizes (TreeNode cur)
+		{				
+			if (cur == null)
+				return;
+				
+			printSizes (cur.R);
+			Console.WriteLine ("K: " + cur.key + " SIZE: " +cur.size);									
+			printSizes (cur.L);
+		}
 		
 		public void print (TreeNode cur)
 		{				
@@ -411,30 +278,37 @@ namespace BSTTree
 			// True: derecha, false: izquierda
 			bool OT = true;
 				
-			// Si es menor el key del root, la orienacion de hubbard delete es a la izquierda
-				
+			
+			//SI se borra el root
+			
+			
+			// Si es menor el key del root, la orienacion de hubbard delete es a la izquierda													
+			
 			if (_key < cur.key) {		
 				OT = false;			
-				prev= cur;
+				prev= cur.L;
 				cur = cur.L;
 			} else if (_key > cur.key) { // Si es mayor el key buscado en comparacion con el root.key, se dirige hacia la derecha
-				prev = cur;
+				prev = cur.R;
 				cur = cur.R;			
-			}	
-					
+			}	else if (_key == root.key && root.R!=null) {
+					prev = cur;					
+			}
+			else if (_key == root.key && root.L!=null) {
+				prev = cur;
+				OT= false;
+			}
+			
 				 
 			while (cur!=null)
 			{
 				// Cuando encuentre el valor a eliminar
 				// Entra en esa posicion y ademas de eliminar,
 				// Busca al sustituto para esa posicion
+				//verificar delete cuando no tenga hijos a su izquierda y el de su derecha tenga hijos a su derecha y viceversa
 				
 				if (cur.key == _key) // Si encuentra el numero a borrar
 				{
-					Console.WriteLine("PREV: " +prev.key);
-					Console.WriteLine("Cur : " +cur.key);
-					//Console.WriteLine("cur.R :" +cur.R.key);										
-					Console.WriteLine("cur.R :" +OT);	
 					
 					if (OT) // Si el numero a borrar se encuentra en el subtree a la derecha del root
 					{
@@ -442,40 +316,33 @@ namespace BSTTree
 							
 							temp = cur.R;
 							
-							Console.WriteLine("temp.R :" +temp.key);
-							Console.WriteLine("prev.R :" +prev.key);
-							
-							if (temp.L != null) {
 								
-								Console.WriteLine ("!!!!"+temp.key);
-								temp = min (temp.L,ref prev); 
-								Console.WriteLine ("!!!!"+temp.key);								
+							if (temp.L != null) {
+								prev = cur;
+							
+								//bug cuando min y max no tienen profundidad en sus respectivos lugares a
+								temp = min (temp,ref prev); 
 								cur.val = temp.val;
 								cur.key = temp.key;
 								
-								if (temp.R!=null) // Si el min tiene hijos a su derecha
+								if (temp.R!=null) 
+								{// Si el min tiene hijos a su derecha
+									// guarda esos hijos en la derecha del nodo a reemplazar
 									prev.L = temp.R;
-								
-								// debo hacer el previos de ese min en su izquierda null
-								prev.L = null;
-								temp = null;
+									temp = null;
+									
+								}
+								else {// debo hacer el previos de ese min en su izquierda null
+									prev.L = null;
+									temp = null;
+								}
 								return ;
 									
-								/*
-									temp.R = cur.R;
-									 	temp.L = cur.L;
-								*/
-						}
+								
+						} else if (cur.R != null) {
 							
-						 else if (cur.R != null) {
-							
-							Console.WriteLine("temp.R !!!!!!:" +temp.key);
-								Console.WriteLine("PREV !!!!!!:" +prev.key);
 							// it must make the temp cur.L?																
 							// parent connected to his new right son																						
-							Console.WriteLine ("temp" + cur.R.key);															
-								Console.WriteLine ("temp" + cur.R.key);															
-								Console.WriteLine ("curR" + cur.R.key);
 							prev.R = temp;
 								
 							if(cur.L!=null)
@@ -512,56 +379,47 @@ namespace BSTTree
 								prev.R=null;
 							else if(cur.key < prev.key)
 								prev.L =null;
-						cur = null;
+							cur = null;
 						}
 						
 					} else // Si el subtree o nodo a borrar se encuentra a la izquierda del root
 					{
-						if (cur.L != null) 
-						{
-							temp = cur.L;
+						if (cur.L != null) {
+							temp = cur.L;						
 							
-							
-							
-							if (temp.R != null) 
-							{
-								Console.WriteLine ("!!!!!!!!!!!!!!!!!!!!1");
-								Console.WriteLine (cur.key);
-								temp = max (temp.R, ref prev); 
+							if (temp.R != null) {
+								prev = cur;
+								temp = max (temp, ref prev); 
 								
-								Console.WriteLine ("HERE@FDJFJ " + prev.key);
-								Console.WriteLine (temp.key);				
 								
 								cur.val = temp.val;
 								cur.key = temp.key;
 									
-								// se debe confirmar si tiene derecha o izquierda este nodo //if()	
-								if (temp.L!=null) // Si el min tiene hijos a su izquierda
-									prev.R = temp.L;
 								
-								prev.L =null;
-								temp = null;
+								if (temp.L!=null) 
+								{// Si el min tiene hijos a su derecha
+									// guarda esos hijos en la derecha del nodo a reemplazar
+									prev.R = temp.L;
+									temp = null;
+									
+								}
+								else {// debo hacer el previos de ese min en su izquierda null
+									prev.R = null;
+									temp = null;
+								}
 								
 								return ;
 									
 									
-								/*
-									temp.R = cur.R;
-									temp.L = cur.L;
-									*/
 							}
-							else if (temp.L != null) 
-							{
+							
+							else if (cur.L != null) {
 							// it must make the temp cur.L?																
 							// parent connected to his new right son																						
 						
-								
-							Console.WriteLine("temp.R !!!!!!:" +temp.key);
 							// it must make the temp cur.L?																
 							// parent connected to his new right son																						
-							Console.WriteLine ("!!" + cur.L.key);															
-								Console.WriteLine ("V" + cur.L.key);
-								
+							
 							prev.L = temp;
 								
 							if(cur.R!=null)
@@ -574,7 +432,6 @@ namespace BSTTree
 							
 							else if(temp.L==null) // not necessary
 							{
-								Console.WriteLine("HERE!");
 								cur.key = temp.key;
 								cur.val = temp.val;
 								cur.L=null;
@@ -593,8 +450,11 @@ namespace BSTTree
 						cur = null;
 						}
 						else {
-						prev.L=null;
-						cur = null;
+							if(cur.key > prev.key ) 
+								prev.R=null;
+							else if(cur.key < prev.key)
+								prev.L =null;
+							cur = null;
 						}
 					
 				}
@@ -615,37 +475,6 @@ namespace BSTTree
 		}
 		
 		
-		/*
-		
-		public TreeNode bef_max (TreeNode x, TreeNode prev)
-		{
-
-			TreeNode cur = x;
-			//TreeNode _cur = root;
-
-			while (cur.R!=null) 
-			{
-				prev = 
-				cur = cur.R;
-			}
-			return cur;
-		}
-		
-		public TreeNode bef_min (TreeNode x, TreeNode prev)
-		{
-
-			TreeNode cur = x;
-			//TreeNode _cur = root;
-
-			while (cur.L!=null) 
-			{
-				prev = 
-					
-				cur = cur.L;
-			}
-			return cur;
-		}
-		*/
 		
 		public TreeNode next (int _key)
 		{	
@@ -671,24 +500,45 @@ namespace BSTTree
 		
 		public TreeNode min (TreeNode x, ref TreeNode prev)
 		{
-
 			TreeNode cur = x;
 			//TreeNode _cur = root;
-
+		
+			
+			
+			if(cur.L==null) {
+				prev = x;
+				return cur;	
+				
+			}
+			
 			while (cur.L!=null) 
 			{
 				prev = cur;
 				cur = cur.L;
 			}
+			
+			
 			return cur;
 		}
 			
 		
 		public TreeNode max (TreeNode x, ref TreeNode  prev)
 		{
+			
+			
 
 			TreeNode cur = x;
-
+			//TreeNode _cur = root;
+			
+			if(cur.R==null) {
+			
+				prev = x;
+			
+				return cur;	
+				
+			}
+	
+			
 			while (cur.R!=null) 
 			{ 	
 				prev = cur;
@@ -723,7 +573,7 @@ namespace BSTTree
 		
 		
 		
-		public void AddNodeB (int _key, int _val)
+		public void AddNode (int _key, int _val)
 		{
 			TreeNode newNode = new TreeNode (_key, _val);			
 			TreeNode curr = root;
@@ -736,113 +586,92 @@ namespace BSTTree
 				return ;
 			}
 				
-					
+			
 			Stack<TreeNode> p = new Stack<TreeNode>();
 		
+			if (root.R!=null && root.L!=null)
+			{
+				p.Push(root.L);
+				p.Push(root.R);
+			} else if (root.R!=null )
+				p.Push(root.R);
+			else if(root.L!=null )
+				p.Push(root.L);
+			
+			p.Push(root);
+			
 			while (curr!=null) {		
 				
-				//	temp = curr;	
 				temp = curr;
-				// Si el valor ya existe, reemplaza el valor del nodo
 				
-					
-				if (_key < curr.key)
+				if(_key == curr.key)
 				{
-					p.Push(curr);
-					curr.size++;
-					curr = curr.L;
-					
-				}
-				else if (_key > curr.key)
-				{	
-					p.Push(curr);
-					curr.size++;
-					curr = curr.R;
-				}
-				
-				
-			}	
-			
-					
-			if (_key > temp.key) { 				
-				curr = new TreeNode (_key, _val);
-				temp.R = curr;
-			} else if (_key < temp.key) {
-				curr = new TreeNode (_key, _val);
-				temp.L = curr;
-			}
-			
-			for(int i=0 ; i<p.Count;i++)		
-						p.Pop().size++;
-				
-			
-			size++;
-					
-			
-		}
-		
-		
-			public void AddNode (int _key, int _val)
-		{
-								
-			TreeNode newNode = new TreeNode (_key, _val);			
-			TreeNode curr = root;
-			TreeNode temp = null;
-				
-			
-			if (size == 0) {		
-				root = newNode;
-				size++;
-				return ;
-			}
-			
-			// should i consider this
-			/*temp = FindNode(_key); 
-			 * if (temp!=null)
-			 * {
-					temp.val = _val;
-					return ;
-			   }
-				
-			*/
-			
-			while (curr!=null) {		
-				
-				//	temp = curr;	
-				temp = curr;
-				// Si el valor ya existe, reemplaza el valor del nodo
-				if (_key == curr.key) {
+					curr.key = _key;
 					curr.val = _val;
 					return ;
+				}					
+				else if (_key < curr.key)
+				{
+					p.Push(curr);	
+					curr = curr.L;																
+				
 				}
-					
-				if (_key < curr.key)
-						
-					curr = curr.L;
 				else if (_key > curr.key)
-						
+				{						
+					p.Push(curr);
 					curr = curr.R;
+					
+				}	
 				
 				
 				
 			}	
 			
-					
-			if (_key > temp.key) { 
+
+			if (_key > temp.key) { 	
+			
 				curr = new TreeNode (_key, _val);
 				temp.R = curr;
-			} else if (_key < temp.key) {
+			} else if (_key < temp.key) {				
 				curr = new TreeNode (_key, _val);
 				temp.L = curr;
 			}
-				
-				
 			
+			TreeNode tm = null;
+			
+			
+			for(int i=0 ; i<=p.Count;i++)		
+			{
+						tm = p.Pop();
+						updateSize(ref tm);
+						
+			}
+			// incrementa el tamanio del tree
+			// 
 			size++;
-					
+			root.size = size;
+		}
+		
+		
+		
+		public void updateSize(ref TreeNode x) 
+		{
+			// Si el nodo posee 	
+			if(x.R!=null && x.L !=null)
+			{
+				x.size = x.R.size+x.L.size+1;
+				
+			} else if( x.L!=null)
+			{	
+				x.size = x.L.size+1;
+			} else if (x.R !=null) {
+				x.size = x.R.size+1;
+			}
+			
 			
 		}
 		
+		// agrega un nodo sin sizes
 	}
 		
 	public class TreeNode
@@ -853,6 +682,7 @@ namespace BSTTree
 		public int val;
 		public int key;
 		public int size; // subtree size
+		
 		public TreeNode (int _key, int _val)
 		{	
 			L = null;
@@ -875,6 +705,5 @@ namespace BSTTree
 			
 	}
 }
-
 
 
