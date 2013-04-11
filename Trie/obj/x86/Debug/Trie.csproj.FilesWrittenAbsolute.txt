@@ -1,0 +1,4 @@
+/root/Trie/Trie/bin/Debug/Trie.exe.mdb
+/root/Trie/Trie/bin/Debug/Trie.exe
+/root/Trie/Trie/obj/x86/Debug/Trie.exe
+/root/Trie/Trie/obj/x86/Debug/Trie.exe.mdb
