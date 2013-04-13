@@ -5,7 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+<<<<<<< HEAD
     <ProjectGuid>{D8211F0A-CA77-48A0-BB93-49E60811A4BB}</ProjectGuid>
+=======
+    <ProjectGuid>{33D0CF9A-7E29-4A76-9BB1-B18C3517E624}</ProjectGuid>
+>>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
     <OutputType>Exe</OutputType>
     <RootNamespace>Trie</RootNamespace>
     <AssemblyName>Trie</AssemblyName>
