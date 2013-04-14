@@ -9,11 +9,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("")]
-<<<<<<< HEAD
 [assembly: AssemblyCopyright("ofoi")]
-=======
-[assembly: AssemblyCopyright("root")]
->>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

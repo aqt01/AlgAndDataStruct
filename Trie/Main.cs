@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System;
 
 using System.Collections.Generic;
@@ -6,26 +5,14 @@ using System.IO;
 
 namespace Trie
 {
-=======
-using
-
-System;
-
-namespace
-
-Trie
-{
-
->>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
     class MainClass
     {
 
         public static void Main(string[] args)
         {
 
-<<<<<<< HEAD
-            Trie trie = new Trie();
-			Game game = new Game();
+            Trie trie = new Trie(); // se crea un objeto de trie
+			Game game = new Game(); // se crea un objeto de la clase game
             int szMatrix; // tamanio de la matrix
 			char mand; // letra mandatoria
 			trie.LoadDict(); // Se carga el diccionario con todas las palabras
@@ -38,6 +25,9 @@ Trie
 			Console.WriteLine("A : " + trie.Find("A"));  // Debe retornar 1930
 			Console.WriteLine("WARY : " + trie.Find("WARY"));  // Debe retornar 1930
 			Console.WriteLine("OF : " + trie.Find("OF"));  // Debe retornar 1930
+			
+			
+			Console.WriteLine("Done! ...");
 			
 			Console.WriteLine();
 			
@@ -57,22 +47,17 @@ Trie
                     Console.WriteLine("[" + i + "] [" + j + "] :");
                     game.matrix[i, j] = char.Parse(Console.ReadLine());
                 }
-			// ic es contador para guardar las letras de la matrix en una variable cadena y  una lista de caracteres
-			//  de la matriz
-			
-            
-            
+			// setletters organiza las letras dentro de un arreglo y dentro de una palabra que luego se usara para permutar                        
             game.setLetters();
             
-			
+			Console.WriteLine ("Press any key to generate permutations");
             Console.ReadLine();
             game.Backtracking(game.word,trie);
-            game.setHighScore();
-			Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			game.ShowHighScore();
+            game.setHighScore(); // Organiza y solo toma los valores y las palabras mas altas en sus respectivas listas
+			Console.WriteLine("Highest scores and words of the permutations: ");
+			game.ShowHighScore(); // muestra las palabras y los valores mas altos
             Console.ReadLine();
-
-            //trie.Permutation(charArr,0);
+            
         }
 
     }
@@ -81,18 +66,16 @@ Trie
 	public class Game
 	{
 		int maxScore; // Puntaje mas alto 
-		
+		int j; // contador para ir recorriendo y guardando en los arreglos de highscore y maxscore
 		int szMatrix;// tamanio de la matrix		
     	public char[,] matrix; // Matriz
-		string[] matrixWords; // Letras correctas dentro de la matriz
-	    int[] Scores; // Posee en un arreglo los puntos de cada palabra de la matriz	
-        int[] highScores; // Arreglo con los valores mas altos
-		string[] wordMax; // Arreglo con las palabras de mayor valor
+		List<string> matrixWords; // Letras correctas dentro de la matriz
+	    List<int> Scores; // Posee en un arreglo los puntos de cada palabra de la matriz	
+        List <int> highScores; // LIsta con los valores mas altos
+		List <string> wordMax; // lista con las palabras de mayor valor
         public string word; // cadena con las palabras de la matriz        
-        string[] words; // cadena con las palabras que se encuentran dentro de la permutacion de la matriz
-        public char[] letters; // arreglo con las letras de la matriz        	
+         public char[] letters; // arreglo con las letras de la matriz        	
         bool[] flags; // contendra las posiciones en donde si y en donde no se ha permutado
-		string[] maxWords; // se guardan las palabras con el mas alto valor
 		char mand; // letra mandatoria
 		
 		// Constructor de la clase game
@@ -103,21 +86,23 @@ Trie
 		// Setea todos los valores de los arreglos y variables de acuerdo al tamanio de la matrix dado
 		public void setUpMatrix(int _sz, char _mand) 
 		{
-			if(_sz>4)
+			if(_sz>4)// si el tamanio es mayor que 4, tira excepcion
 				throw new InvalidMatrixSize("Tamanio de matriz incorrecto");
             szMatrix = _sz; // Asigna el tamanio asignado a la matriz
-            matrix = new char[szMatrix, szMatrix];
-            flags = new bool[szMatrix * szMatrix]; // Un arreglo de banderas para controlar cuando se ha permutado x palabra en esa posicion
-            words = new string[szMatrix * szMatrix];
-			Scores = new int[szMatrix * szMatrix]; // se inicializa la lista con los puntajes por palabras dentro de la matriz	
+            matrix = new char[szMatrix, szMatrix]; // se inicializa la matrix
+            matrixWords = new List<string>();  // se inicializa la lista de palabras de la matriz, en ella se guardaran las palabras que se iran comparando, hasta ser la mas grande
+		    Scores = new List<int>();  // se inicializa la lista de scores, en ella se guardaran las puntuaciones a medida que vayan creciendo hasta ser la mas grande
+        	highScores = new List<int>() ; // contiene las puntuaciones mas altas
+			wordMax = new List<string>();  // Contiene las palabras con las puntuaciones mas altas
+    
+			flags = new bool[szMatrix * szMatrix]; // Un arreglo de banderas para controlar cuando se ha permutado x palabra en esa posicion
             for (int i = 0; i < (szMatrix * szMatrix); i++) // Se asigna falso a todas las posiciones del arreglo de flags
                 flags[i] = false;
-			matrixWords = new string[szMatrix * szMatrix];
-            letters = new char[szMatrix * szMatrix]; // se inicializa la lista de letras que tiene la matrix
+		    letters = new char[szMatrix * szMatrix]; // se inicializa la lista de letras que tiene la matrix
             mand = _mand; // se asigna la letra mandatoria
-			maxWords = new string[szMatrix * szMatrix];// se asigna tamanio para las palabras con valores mas altos
-            maxScore = 0; // como aun no se ha encontrado un valor maximo, por ahora, sera 0
+	        maxScore = 0; // como aun no se ha encontrado un valor maximo, por ahora, sera 0
 		}
+		
 		// Setea las letras en la matrix en la lista de la clase
 		// y aparte, las pone todas en una variable word
 		public void setLetters() {
@@ -126,29 +111,29 @@ Trie
 			//  de la matriz
 			
 			int ic=0;
+			
 			for (int i = 0; i < szMatrix; i++)
             {
                 Console.WriteLine();
                 for (int j = 0; j < szMatrix; j++)
                 {
+					// muestra el valor dentro de esa posicion
                     Console.Write(" [" + i + "] [" + j + "]: " +matrix[i, j]);
+					Console.Write(" ");
                     word += Convert.ToString(matrix[i, j]); // se guarda el valor de la matriz en un string word
-                    letters[ic] = (matrix[i, j]);  // se guardan las letras de la matriz en una lista letters
-                    Console.WriteLine("!!!!!");
-                    Console.WriteLine(letters[ic]);
+                    letters[ic] = (matrix[i, j]);  // se guardan las letras de la matriz en una lista letters                    					
                     ic++; // avanza el contador
                 }
 
             }
-            Console.WriteLine(word);
 			
 		}
 		
 		// Muetra las puntuaciones mas altas encontradas en el diccionario con su puntuacion al lado
 		public void ShowHighScore()
         {
-            for (int i = 0; i < Scores.Length; i++)				
-                	Console.WriteLine(maxWords[i] + ": " + highScores[i]);
+            for (int i = 0; i < wordMax.Count; i++)				
+                	Console.WriteLine(wordMax[i] + ": " + highScores[i]);
 
         }
         
@@ -157,25 +142,19 @@ Trie
         {
         	int ic=0; // contador para guardar los valores y cadenas mayores
         	
-			highScores = new int[matrixWords.Length];
-			
-        	// Busca todos los valores altos para ubicar solo los mayores valores existentes
-        	for (int i = 0; i < matrixWords.Length; i++) {
+			// Busca todos los valores altos para ubicar solo los mayores valores existentes
+        	for (int i = 0; i < Scores.Count; i++) {
         		// Si el mayor valor conocido durante la permutacion es igual al mayor de entre los mayores
         		// toma ese valor, se usa para solo tomar los valores mayores y las  cadenas con valores mayores
         		if(maxScore == Scores[i]) {
-        			maxWords[ic] = matrixWords[i];
-        			highScores[ic] = maxScore;
+        			wordMax.Add (matrixWords[i]);
+        			highScores.Add ( maxScore);
         			ic++;
-        			
         		}
 				
-                //Console.WriteLine(matrixWords[i] + ": " + Scores[i]);
-            }
-        	
-            for (int i = 0; i < letters.Length; i++)
-                Console.WriteLine(maxWords[i] + ": " + Scores[i]);
                 
+            }
+        	                
 
         }
 		
@@ -204,8 +183,9 @@ Trie
 			
 			int szMatrix = _word.Length;// szMatriz es el tamanio total de la cadena con todas las letras de la matriz, es decir szMatrix = ancho*largo de la matriz
 			
-            int j = 0; // contador para
+            // contador para
 			// SE itera la palabra y se toman cada una de las letras de el, para luego usarlas en la iteracion
+			int score; // posee la puntuacion de la palabra a permutar
 			
 			for (int i = 0; i < szMatrix; i++)
 			{
@@ -215,19 +195,16 @@ Trie
             // Si en la palabra se encuentradfdf el caracter mandatorio
             if (wordPerm.Contains(Convert.ToString(mand)))
             {	// si la palabra existe en el Trie
-                if (trie.Find(wordPerm) != 0)
-				{
-					if(maxScore <= trie.Find(wordPerm)) {						
-						maxScore = trie.Find(wordPerm);
-						Scores[j] = maxScore;
-						matrixWords[j] = wordPerm;
+				score=trie.Find(wordPerm);
+				// si la variable score posee puntaje quiere decir que la palabra existe dentro del Trie
+                if ( score!= 0) { 
+					if(maxScore <= score) {	// si ese puntaje es menor o igual que el maximo puntaje conocido, es reemplazado por el puntaje actual
+						maxScore = score;
+						Scores.Add (maxScore);
+						matrixWords.Add(wordPerm); // se agrega la palabra en ese momento
 						
-						Console.WriteLine("MAX");
-						Console.WriteLine(wordPerm + "XXXX : " + trie.Find(wordPerm) +" Max:" + maxScore);
-						j++;
 					}                    
 					//Scores[j] = trie.Find(wordPerm);
-                    Console.WriteLine(wordPerm + "! : " + trie.Find(wordPerm));
                     _word = wordPerm;
                     
                     
@@ -235,14 +212,14 @@ Trie
             }
             //  Console.WriteLine("!!! " + flags.Length);
            
-            
+            // Hacemos las recursiones con los valores de la matriz
             for (int i = 0; i < szMatrix; i++)
             {
          
-                			//Vemos si está marcada para no volverla a permutar
+                // La verificacion se realiza siempre y cuando no se haya marcado esa posicion de la matriz
             	if (flags[i] != true)
                 {
-                    //Marcamos el caracter que vamos a permutar
+                    // El caracter es marcado para indicar que fue usado
                 	flags[i] = true;
                     // Hacemos backtraking con un caracter mas
                     Backtracking(_word,wordPerm + letters[i], trie);
@@ -262,21 +239,17 @@ Trie
 
 
         int size;    // tamanio del Trie
-     	public TrieNode root = new TrieNode();
+     	public TrieNode root; // se crea la raiz del  Trie
 		
         public Trie()
         {
             // Constructor
             // se inicializan los tamanios de la matriz y del Trie			
             size = 0;
-			
+			// se crea la raiz de Trie
+			root = new TrieNode();
           			
         }
-        // Asigna el tamanio dado a la matriz que contendra los valores introducidos por el usuario
-        // Asigna el tamanio a los arreglos de score, de flgas, de letras y de palabras 
-
-        // Funcion modifica la variable con el caracter mandatorio
-      
         // Retorna el size del Trie
         public int Size()
         {
@@ -290,125 +263,57 @@ Trie
             // Se hace una variable temporal que tome a la palabra introducida
             string temp = word;
 
-            // SE toma cur como la raiz en donde comenzara a preguntar
+            // SE toma cur como la raiz en donde comenzara a mavegar
             TrieNode cur = root;
 
-=======
-            Trie thing = new Trie();
-
-            string hol = "HOLA";
-
-            thing.Insert(hol,5);
-
-            Console.WriteLine(hol);
-
-          
-            Console.WriteLine("Char VAL!: " + thing.Find(hol) );
-			
-        }
-
-    }
-
-    class Trie
-    {
-        // tamaño del Trie
-
-        int size;
-
-        // Se crea un arreglo de 26
-
-        // que representarán las letras del abecedario
-        TrieNode root = new TrieNode();
-
-        
-        public Trie()
-        {
-            // J posee el valor ascii de la primera letra del abecedario en mayuscula
-			
-		
-     /*       int j = 65;
-            char xs;
-            // Genera todas las letras de 'A' hasta 'Z'
-          /*  for (int i = 0; i < 26; i++)
-            {
-                
-                ar[i] = new TrieNode(j, j);
-                xs = Convert.ToChar(j);
-			
-                Console.WriteLine(xs);                
-                j++;
-
-            }*/
-			
-			for (int i = 0; i < 26; i++)     {                    
-            	root.ar[i] = new TrieNode('_',0);           
-			}
-
-        }
-
-        public void Insert(string word, int _val)
-        {
-			// se inserta una palabra dentro del Trie
-			// Se hace una variable temporal que tome a la palabra introducida
-			
-            string temp = word;
-			
-			// SE toma cur como la raiz en donde comenzara a preguntar
-			
-            TrieNode cur = root;
-			//
-			
-			
->>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
             while (temp.Length != 0)
             {
 
                 // busca la primera letra de la palabra introducida
-<<<<<<< HEAD
                 // y entra en el nodo de aquella primera letra para ir iterando hasta
                 // confirmar que se ha encontrado toda la palabar
                 // Toma el primer caracter de la palabra
                 char chr = Convert.ToChar(temp.Substring(0, 1));
+				// toma el indice de acuerdo al caracer ascii de donde deberia estar esa palabra
                 int idx = chr - 65;
 
                 //verifica si el valor a insertar es valido, es decir, si es mayuscula de A hasta Z
-                if ((chr - 65) >= 0 && (chr - 65) < 26)
+                if ((idx) >= 0 && (idx) < 26)
                 {
+					// si en esta posicion debajo, es nula
                     if (cur.ar[idx] == null)
                     {
-
+						// ya que se conoce que se creara un valor al entrar en un nodo nulo, se incrementa el size
+						 size++;
+						// si al entrar, a la palabra introducida solo le queda una letra por eliminar
                         if (temp.Length == 1)
                         {
-
-                            cur.ar[idx] = new TrieNode(chr, _val);                          
+							// se crea debajo el nodo con el caracter y el valor y sale del for
+                            cur.ar[idx] = new TrieNode(chr, _val);  							
                             break;
                         }
-                        else
-                        {
+                        else // si no es la ultima letra por eliminar y esta vacio
+                        { 
+							// se crea debajo un nodo sin valor, es decir, 0, con el caracter dado
                             cur.ar[idx] = new TrieNode(chr, 0);
-                            cur = cur.ar[idx];
+                            cur = cur.ar[idx]; // navega dentro de ese nodo creado							
                         }
-                        // Si en este nodo de Trie, el valor buscado no es igual al dado por la letra
-                        // Crea ese nodo en esa posicion
-                        // Se resta 65 para obtener el indice de la posicion de la letra a donde deberia estar la que se va a insertar
-                        // Si no existe se nodo, crea el nodo y continua
                     }
-					
+					// si esa posicion ya posee valor
                     else if ( cur.ar[idx]!=null)
-                    {
+                    {	// si ya posee valor y solo le queda una letra por eliminar a la palabra
                      	if(temp.Length==1)
-							cur.ar[idx].val = _val;
-						else
-						//   cur = new TrieNode(chr, 0);             
+							cur.ar[idx].val = _val; // se cambia el valor de la palabra, pues ya existe
+						else // si no es el ultimo valor por eliminar, solo navega adentro de ese nodo						
                         	cur = cur.ar[idx];
-                        // de lo contrario, si existe, entra a ese nodo
+                        	// de lo contrario, si existe, entra a ese nodo
                     }
                 }
-                else // Si se introduce un valor que no sea entre 'A' hasta 'Z'
+                else // Si se introduce un valor que no sea entre 'A' hasta 'Z', tira excepcion
                     throw new InvalidDataException();
-
+				// luego de cada asignacion o navegacion, se remueve una letra de la palabra temporal
                 temp = temp.Remove(0, 1);
-                size++;
+               
 
             }
 
@@ -419,7 +324,6 @@ Trie
         {
         	// Guarda el valor de la linea en el archivo
             String line;
-            // Read the file and display it line by line.
 			// Carga el archivo dict.txt
             StreamReader file = new System.IO.StreamReader("dict.txt");
             String[] splited; // Arreglo con el valor de la linea separado
@@ -450,101 +354,33 @@ Trie
             TrieNode cur = root;
             
             int chr = 0;
-=======
-
-                // y entra en el nodo de aquella primera letra para ir iterando hasta
-
-                // confirmar que se ha encontrado toda la palabar
-				
-				
-				// Toma el primer caracter de la palabra
-				char chr = Convert.ToChar( temp.Substring(0, 1));
-				
-                int idx = chr - 65;
-				Console.WriteLine( temp.Substring(0, 1) + " "+ chr + " " + idx);
-				
-				Console.ReadLine ();
-				
-			// me interesaria insertar en esa posicion que me estan dando!?
-				
-				// Las 3 formas de hacerlo segun yo son: tomando el valor donde deberia ir y preguntar si esta nulo
-				// Llenando todo el arreglo con el alfabeto, o con algun caracter para identificar que no ha sido usado.
-				// use la ultima
-				//Console.WriteLine(cur.ar[idx].key);
-                if ( cur.ar[idx] == null )
-                {
-					cur.ar[idx] = new TrieNode (chr,_val);
-					cur = cur.ar[idx];	
-					
-					                
-					// Si en este nodo de Trie, el valor buscado no es igual al dado por la letra
-					// Crea ese nodo en esa posicion 
-					// Se resta 65 para obtener el indice de la posicion de la letra a donde deberia estar la que se va a insertar
-					// Si no existe se nodo, crea el nodo y continua
-				
-                } else
-				{					
-                 
-					
-               		Console.WriteLine(chr);	
-					cur.ar[idx] = new TrieNode(chr,_val);
-                    cur = cur. ar[idx];
-					// de lo contrario, si existe, entra a ese nodo				
-					
-					
-				}
-				
-				temp = temp.Remove(0,1);
-				size++;
-			
-            }
-			
-			
-        }
-
-        public int Find(string word)
-        {
-			
-				// Se hace una variable temporal que tome a la palabra introducida
-			
-            string temp = word;
-			
-			// SE toma cur como la raiz en donde comenzara a preguntar
-			
-            TrieNode cur = root;
-			//
-			int chr;
-			
->>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
             while (temp.Length != 0)
             {
 
                 // busca la primera letra de la palabra introducida
-<<<<<<< HEAD
                 // y entra en el nodo de aquella primera letra para ir iterando hasta
                 // confirmar que se ha encontrado toda la palabar
                 chr = Convert.ToChar(temp.Substring(0, 1));
                // Console.WriteLine(temp.Substring(0, 1) + " char " + chr);
 				//Console.WriteLine(temp.Substring(0, 1) + " LEGNTH:  " + temp.Length);
-               
+                int idx = chr - 65;
                 // verifica si el valor ascii de la letra buscada esta entre el rango de 65 a 90, es decir, mayusculas de A hasta Z
-                if (  0 <= (chr - 65)  && (chr - 65) < 26) {
-                    if (cur.ar[chr - 65] != null && temp.Length == 1) {
-
-                  //      Console.WriteLine("@!Char: " + temp.Substring(0, 1) + " Val: = " + cur.val);
-                        cur = cur.ar[chr - 65];
-					//	Console.WriteLine("@!Char: " + temp.Substring(0, 1) + " Val: = " + cur.val);
+                if (  0 <= (idx)  && (idx) < 26) {
+                    if (cur.ar[idx] != null && temp.Length == 1) {                
+                        
+						cur = cur.ar[idx];					
                         break;
+						
                     }
-                    else if (cur.ar[chr - 65] != null) {
+                    else if (cur.ar[idx] != null) {
 
-                        //    Console.WriteLine("Char: " + temp.Substring(0, 1) + " Val: = " + cur.ar[chr - 65].val);
-                        cur = cur.ar[chr - 65];
+                        cur = cur.ar[idx];
 
                     }
                     else // si hay algun nodo que este vacio, devuelve 0
                         return 0;
-                    temp = temp.Remove(0, 1);
+                    // se remueve la palabra de alante
+					temp = temp.Remove(0, 1);
 
                 }
                 else //devuelve 0 si el caracter no esta entre el valor ascii 65 y 91 
@@ -552,183 +388,51 @@ Trie
             }
 
 
-            // al terminar el recorrido, devuelve el val de la ultima letra, que significara el valor de la palabra completa
-            //return cur.val;
+            // al terminar el recorrido, devuelve el val de la ultima letra, que significara el valor de la palabra completa            
             return cur.val;
-=======
-
-                // y entra en el nodo de aquella primera letra para ir iterando hasta
-
-                // confirmar que se ha encontrado toda la palabar
-				
-				chr = Convert.ToChar( temp.Substring(0, 1));
-                
-				Console.WriteLine( temp.Substring(0, 1) + " "+ chr);						
-				
-				Console.ReadLine ();
-				
-                
-                
-					
-                    if (cur.ar[chr-65] !=null)
-                    {
-
-                        Console.WriteLine(temp.Substring(0,1)+ " = " +cur.ar[chr-65].key);
-                        
-						if(temp.Length >1)
-							cur = cur. ar[chr-65];
-
-                    } else
-						return -1;
-				
-				temp = temp.Remove(0,1);
-				
-            }
-			
-            // Si no encuentra la palabra
-
-            // devuelve 0
-
-            return cur.ar[chr-65].val;
-
->>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
-        }
-
-        public int Key(char _key)
-        {
-
-            int i = 0;
-<<<<<<< HEAD
-            for (i = 0; i < 26; i++)
-                if (_key == root.ar[i].key)
-                {
-
-                    //Console.WriteLine(root.ar[i].key + " " + " val:! " + root.ar[i].val);
-                    break;
-                }
-
-            // Si no encuentra la palabra
-            // devuelve 0
-            return root.ar[i].val;
         }
 
 
-=======
-
-            for (i = 0; i < 26; i++)
-
-                if (_key == root.ar[i].key)
-                {
-
-                    Console.WriteLine(root.ar[i].key + " " + " val:! " + root.ar[i].val);
-
-                    break;
-
-                }
-
-            // Si no encuentra la palabra
-
-            // devuelve 0
-
-            return root.ar[i].val;
-
-        }
-
-        protected void Gen()
-        {
-
-        }
->>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
 
     }
 
     public class TrieNode
     {
-
         public char key;
-
         public int val;
-<<<<<<< HEAD
-        public int size; //
-        // sera el fin de la palabra hasta que se demuestre lo contrario
-
+        
         // hijos de Trie
         public TrieNode[] ar = new TrieNode[26];
 
         public TrieNode()
         {
-            val = 0;
-            // this must be the solution but doens't work
-            // J posee el valor ascii de la primera letra del abecedario en mayuscula
+            val = 0; // al construirlo, lo construye con valor 0
         }
 
 
         public TrieNode(char _key, int _val)
         {
 
-            // J posee el valor ascii de la primera letra del abecedario en mayuscula
+            // se asignan los valores dados en las respectivas posiciones de key y de val
+			
             key = _key;
 
             val = _val;
 
-            size = 1;
 
-=======
-
-        public int size; //
-        // sera el fin de la palabra hasta que se demuestre lo contrario
-        public bool wordEnd=true;
-        // hijos de Trie
-        public TrieNode[] ar = new TrieNode[26];
-		
-		public TrieNode()
-        {
-			
-			
-			//j=65;// se usa j para crear las letras de 'A' hasta 'Z'
-			// se crean todas las letras del alfabeto sin valor alguno
-		/*for (int i = 0; i < 26; i++)  {                          
-                ar[i] = new TrieNode('_', 0);
-				Console.WriteLine(ar[i].key);
-			}//xs = Convert.ToChar(j);
-		*/	
-                //Console.WriteLine(xs);                
-                //j++;
-
-            
-			// this must be the solution but doens't work
-			
-			for (int i = 0; i < 26; i++)                         
-            	ar[i] = null;      
-            
-            // J posee el valor ascii de la primera letra del abecedario en mayuscula
-            
         }
-
-		
-		
-        public TrieNode(char _key, int _val)
-        {
-            // J posee el valor ascii de la primera letra del abecedario en mayuscula
-            key = _key;
-            val = _val;
-			size =1;
->>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
-        }
-
+		// en caso de que el valor de key introducido sea numero, convierte ese valor de numero a valor ascii
         public TrieNode(int _key, int _val)
         {
-<<<<<<< HEAD
 
             key = Convert.ToChar(_key);
             val = _val;
-            size = 1;
+            
 
         }
      }  
-        //excepciones
-        // Excepciones
-	// Excepcion para operaciones con arbol vacio
+     // Excepciones
+	// Excepcion para devolver cuando se introduce un valor N>4 en la matrix
 	public class InvalidMatrixSize : System.Exception
 	{
     //Constructors. It is recommended that at least all the
@@ -746,13 +450,3 @@ Trie
 	}
 	
 	}
-=======
-            key= Convert.ToChar(_key);
-            val = _val;
-			size = 1;
-        }
-
-    }
-
-}
->>>>>>> 80253f2220f6558a4a521eea7bf5b17d0940b896
