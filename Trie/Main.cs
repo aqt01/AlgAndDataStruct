@@ -63,7 +63,7 @@ namespace Trie
     }
 
 	// clase con la matrix, los puntajes y demas elementos que conforman el juego
-	public class Game
+	public class Game //nice@
 	{
 		int maxScore; // Puntaje mas alto 
 		int j; // contador para ir recorriendo y guardando en los arreglos de highscore y maxscore
